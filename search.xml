@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>My awesome title</title>
-    <url>/2016/10/13/Algorithm/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
-      <categories>
-        <category>分类1</category>
-        <category>分类2</category>
-      </categories>
-      <tags>
-        <tag>标签1</tag>
-        <tag>标签2</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>面向对象初探--基于C++(2)</title>
     <url>/2021/12/07/C++%E7%BB%A7%E6%89%BF/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="C-继承"><a href="#C-继承" class="headerlink" title="C++继承"></a>C++继承</h2><p>继承是面向对象设计中很重要的一个环节，当要定义一个类时，但是已经存在一个类成员或者类成员函数都是你需要的，那么你再写一个类就会花掉大量功夫，所以引出<strong>继承</strong>的概念。<br>继承——就是在已有类的基础上新建一个类，这个类可以继承<strong>基类</strong>的成员或者成员函数。<br>那么什么是基类呢？基类就是已有的类，也叫<strong>父类</strong>新创建的那个类叫做<strong>派生类</strong>，也叫<strong>子类</strong>。<br>下面来看看一段代码：</p>
