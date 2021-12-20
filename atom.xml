@@ -6,7 +6,7 @@
   <link href="https://kcoren77.github.io/atom.xml" rel="self"/>
   
   <link href="https://kcoren77.github.io/"/>
-  <updated>2021-12-19T15:36:39.406Z</updated>
+  <updated>2021-12-20T09:40:39.820Z</updated>
   <id>https://kcoren77.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://kcoren77.github.io/2021/12/19/%E5%A4%A9%E6%A2%AF%E8%B5%9B%E6%84%9F%E6%82%9F/"/>
     <id>https://kcoren77.github.io/2021/12/19/%E5%A4%A9%E6%A2%AF%E8%B5%9B%E6%84%9F%E6%82%9F/</id>
     <published>2021-12-19T15:00:14.311Z</published>
-    <updated>2021-12-19T15:36:39.406Z</updated>
+    <updated>2021-12-20T09:40:39.820Z</updated>
     
     <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>18号的天梯赛总算是打完了，最大感想就是没好好刷题，被天梯赛校赛狠狠的虐了一把，最终还是没有触碰到25分的题目，这也许是最大的遗憾，总分拿到了62分，全校排名29，也算是还行，不至于太差，计通院的大佬们确实，太多了，毕竟他们可以天天写。<br>对于本次天梯赛，第二道20分的题目，就差一点就能写出来，可惜了，不然就80分可能就校一了。<br>在做前面10分15分题目时，也是心惊胆战，按道理能AC的，可是败给了细节，有一道15分的只拿下9分，其余的都超时了，花了我好多时间去维护时间复杂度，好在时间没有白费，还是能做出一点分数的。<br>在赛前，我想着保底有100分，可是确实，草率了，20分题目一题没写出来，在最后的半小时还是没能拿到那题20分，还是硬生生被字符串给暴打了，现在想来最大的敌人莫过于字符串。第一道20分的题，想了半天，还是没能AC，用二分法只能拿到8分，确实有点力不从心了，妥妥的算法题，硬是写不出，所以之后的训练，还是不能看答案去解题，自己想，哪怕一题写几小时。<br>21号还有蓝桥杯校赛，估计也要白给了，寒假训练算法就是不能看题解去写题，这是我的一大弱点，必须改正！<br>人生苦短，坚持努力！<br><img src="/2021/12/19/%E5%A4%A9%E6%A2%AF%E8%B5%9B%E6%84%9F%E6%82%9F/02.jpg" alt=" "></p>]]></content>
     
