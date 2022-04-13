@@ -70,31 +70,6 @@
       </tags>
   </entry>
   <entry>
-    <title>golang--封装</title>
-    <url>/2021/12/05/golang%E5%B0%81%E8%A3%85/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>对于一个对象（类型）来说，你想要实现它的方法，就直接调用，内部是不可见的。</p> 
-
-<p>示例：将Account.go的内容封装起来，建立一个包，将方法具体内容写在里面，注意一个规则，在一个包里创建的类型，首字母小写的话，对于其他包不可导出，这就起到了封装作用，在main.go中，无法查看Account的字段。所以只能通过封装的方法来赋值和获取字段内容。</p>
-<p>代码如下：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">//现在是Account.go</span></span><br><span class="line"><span class="keyword">package</span> model</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//定义Account结构体</span></span><br><span class="line"><span class="comment">//均为小写,通过方法进行访问</span></span><br><span class="line"><span class="comment">//只写方法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Account <span class="keyword">struct</span> &#123;</span><br><span class="line">	id <span class="keyword">string</span>      <span class="comment">// 长度6 - 10</span></span><br><span class="line">	password <span class="keyword">string</span>	 <span class="comment">// 必须是6位</span></span><br><span class="line">	balance <span class="keyword">float64</span>  <span class="comment">// 大于20元</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(a *Account)</span> <span class="title">Setid</span><span class="params">(id <span class="keyword">string</span>)</span></span>&#123;</span><br><span class="line">	<span class="keyword">var</span> <span class="built_in">len</span> <span class="keyword">int</span> = <span class="built_in">len</span>(id)</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span> &gt;= <span class="number">6</span> &amp;&amp; <span class="built_in">len</span> &lt;= <span class="number">10</span>&#123;</span><br><span class="line">		a.id = id</span><br><span class="line">	&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">		fmt.Println(<span class="string">&quot;id长度不合适，拜拜&quot;</span>)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(a *Account)</span> <span class="title">SetPassword</span><span class="params">(password <span class="keyword">string</span>)</span></span>&#123;</span><br><span class="line">	<span class="keyword">var</span> <span class="built_in">len</span> <span class="keyword">int</span> = <span class="built_in">len</span>(password)</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span> == <span class="number">6</span> &#123;</span><br><span class="line">		a.password = password</span><br><span class="line">	&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">		fmt.Println(<span class="string">&quot;密码长度不合适，拜拜&quot;</span>)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(a *Account)</span> <span class="title">SetBalance</span><span class="params">(money <span class="keyword">float64</span>)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> money &gt; <span class="number">20</span>&#123;</span><br><span class="line">		a.balance = money</span><br><span class="line">	&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">		fmt.Println(<span class="string">&quot;余额太少，穷B滚蛋！&quot;</span>)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(a *Account)</span> <span class="title">Getid</span><span class="params">()</span> <span class="title">string</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a.id</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(a *Account)</span> <span class="title">Getpwd</span><span class="params">()</span> <span class="title">string</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a.password</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(a *Account)</span> <span class="title">Getbalance</span><span class="params">()</span> <span class="title">float64</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a.balance</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>上面的代码就是封装好的方法，方法首字母采用大写字母，所以能被main.go调用，</p>
-<p>分别设置字段值和获取字段值。</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">//下面是main.go的代码块</span></span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;awesomeProject/modle&quot;</span></span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">var</span> a model.Account</span><br><span class="line">	a.Setid(<span class="string">&quot;10086&quot;</span>)</span><br><span class="line">	a.SetPassword(<span class="string">&quot;123456&quot;</span>)</span><br><span class="line">	a.SetBalance(<span class="number">30</span>)</span><br><span class="line">	fmt.Println(a.Getid(),a.Getpwd(),a.Getbalance())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>对于main.go的内容来说， var a model.Account 这一行定义一个 model包里面的Account类型的变量，所以a可以访问大写字母开头的方法（如果改为小写字母，则报错无法导出）。</p>
-<p>我对于封装的理解还不是很深入，为什么要使用封装？</p>
-<p>革命尚未成功，同志仍需努力！</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>面向对象思想</tag>
-        <tag>golang</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>单元测试框架--golang</title>
     <url>/2021/12/05/golang%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>引入：根据一个需求，测试完成需求是否正确</p>
@@ -128,19 +103,6 @@
       </tags>
   </entry>
   <entry>
-    <title>算法摆烂总结</title>
-    <url>/2022/04/13/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>本文记录本算法刷题每日或者每周总结, <strong>当然这取决于我的摆烂程度</strong>! 我本不想摆烂的, 但是摆烂的次数多了, 就想摆烂了!<br>算法是一门玄学， 在天梯赛前能不能把图论给拿捏， 还是个问题，每日早起切题人， 已经就绪， 阴间作息希望能给天梯赛带来一点点惊喜吧！  </p>
-<h2 id="4月13日"><a href="#4月13日" class="headerlink" title="4月13日"></a>4月13日</h2><p>摆烂！<br>写个毛算法， 不写了  </p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>L1-059 敲笨钟 (20 分)</title>
     <url>/2021/12/15/%E6%95%B2%E7%AC%A8%E9%92%9F/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="L1-059-敲笨钟-20-分-—-C-题解"><a href="#L1-059-敲笨钟-20-分-—-C-题解" class="headerlink" title="L1-059 敲笨钟 (20 分)—-C++题解"></a>L1-059 敲笨钟 (20 分)—-C++题解</h2><p>好久没有刷算法题了，因为18号有天梯赛校赛，就训练了一下PTA上的题目，碰到一道比较简单的基础思维题，现在来看看  </p>
@@ -153,6 +115,44 @@
       </categories>
       <tags>
         <tag>PTA</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>golang--封装</title>
+    <url>/2021/12/05/golang%E5%B0%81%E8%A3%85/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>对于一个对象（类型）来说，你想要实现它的方法，就直接调用，内部是不可见的。</p> 
+
+<p>示例：将Account.go的内容封装起来，建立一个包，将方法具体内容写在里面，注意一个规则，在一个包里创建的类型，首字母小写的话，对于其他包不可导出，这就起到了封装作用，在main.go中，无法查看Account的字段。所以只能通过封装的方法来赋值和获取字段内容。</p>
+<p>代码如下：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">//现在是Account.go</span></span><br><span class="line"><span class="keyword">package</span> model</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//定义Account结构体</span></span><br><span class="line"><span class="comment">//均为小写,通过方法进行访问</span></span><br><span class="line"><span class="comment">//只写方法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Account <span class="keyword">struct</span> &#123;</span><br><span class="line">	id <span class="keyword">string</span>      <span class="comment">// 长度6 - 10</span></span><br><span class="line">	password <span class="keyword">string</span>	 <span class="comment">// 必须是6位</span></span><br><span class="line">	balance <span class="keyword">float64</span>  <span class="comment">// 大于20元</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(a *Account)</span> <span class="title">Setid</span><span class="params">(id <span class="keyword">string</span>)</span></span>&#123;</span><br><span class="line">	<span class="keyword">var</span> <span class="built_in">len</span> <span class="keyword">int</span> = <span class="built_in">len</span>(id)</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span> &gt;= <span class="number">6</span> &amp;&amp; <span class="built_in">len</span> &lt;= <span class="number">10</span>&#123;</span><br><span class="line">		a.id = id</span><br><span class="line">	&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">		fmt.Println(<span class="string">&quot;id长度不合适，拜拜&quot;</span>)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(a *Account)</span> <span class="title">SetPassword</span><span class="params">(password <span class="keyword">string</span>)</span></span>&#123;</span><br><span class="line">	<span class="keyword">var</span> <span class="built_in">len</span> <span class="keyword">int</span> = <span class="built_in">len</span>(password)</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span> == <span class="number">6</span> &#123;</span><br><span class="line">		a.password = password</span><br><span class="line">	&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">		fmt.Println(<span class="string">&quot;密码长度不合适，拜拜&quot;</span>)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(a *Account)</span> <span class="title">SetBalance</span><span class="params">(money <span class="keyword">float64</span>)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> money &gt; <span class="number">20</span>&#123;</span><br><span class="line">		a.balance = money</span><br><span class="line">	&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">		fmt.Println(<span class="string">&quot;余额太少，穷B滚蛋！&quot;</span>)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(a *Account)</span> <span class="title">Getid</span><span class="params">()</span> <span class="title">string</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a.id</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(a *Account)</span> <span class="title">Getpwd</span><span class="params">()</span> <span class="title">string</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a.password</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(a *Account)</span> <span class="title">Getbalance</span><span class="params">()</span> <span class="title">float64</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a.balance</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>上面的代码就是封装好的方法，方法首字母采用大写字母，所以能被main.go调用，</p>
+<p>分别设置字段值和获取字段值。</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">//下面是main.go的代码块</span></span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;awesomeProject/modle&quot;</span></span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">var</span> a model.Account</span><br><span class="line">	a.Setid(<span class="string">&quot;10086&quot;</span>)</span><br><span class="line">	a.SetPassword(<span class="string">&quot;123456&quot;</span>)</span><br><span class="line">	a.SetBalance(<span class="number">30</span>)</span><br><span class="line">	fmt.Println(a.Getid(),a.Getpwd(),a.Getbalance())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对于main.go的内容来说， var a model.Account 这一行定义一个 model包里面的Account类型的变量，所以a可以访问大写字母开头的方法（如果改为小写字母，则报错无法导出）。</p>
+<p>我对于封装的理解还不是很深入，为什么要使用封装？</p>
+<p>革命尚未成功，同志仍需努力！</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>面向对象思想</tag>
+        <tag>golang</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>算法摆烂总结</title>
+    <url>/2022/04/13/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>本文记录本算法刷题每日或者每周总结, <strong>当然这取决于我的摆烂程度</strong>! 我本不想摆烂的, 但是摆烂的次数多了, 就想摆烂了!<br>算法是一门玄学， 在天梯赛前能不能把图论给拿捏， 还是个问题，每日早起切题人， 已经就绪， 阴间作息希望能给天梯赛带来一点点惊喜吧！  </p>
+<h2 id="4月13日"><a href="#4月13日" class="headerlink" title="4月13日"></a>4月13日</h2><p>开摆！！！！<br>写个毛算法， 不写了  </p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
