@@ -6,7 +6,7 @@
   <link href="https://kcoren77.github.io/atom.xml" rel="self"/>
   
   <link href="https://kcoren77.github.io/"/>
-  <updated>2022-04-12T09:50:05.570Z</updated>
+  <updated>2022-04-13T02:42:44.231Z</updated>
   <id>https://kcoren77.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>算法摆烂总结</title>
+    <link href="https://kcoren77.github.io/2022/04/13/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"/>
+    <id>https://kcoren77.github.io/2022/04/13/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</id>
+    <published>2022-04-13T02:22:03.679Z</published>
+    <updated>2022-04-13T02:42:44.231Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>本文记录本算法刷题每日或者每周总结, <strong>当然这取决于我的摆烂程度</strong>! 我本不想摆烂的, 但是摆烂的次数多了, 就想摆烂了!<br>算法是一门玄学， 在天梯赛前能不能把图论给拿捏， 还是个问题，每日早起切题人， 已经就绪， 阴间作息希望能给天梯赛带来一点点惊喜吧！  </p><h2 id="4月13日"><a href="#4月13日" class="headerlink" title="4月13日"></a>4月13日</h2><p>摆烂！  </p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot; cla</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="https://kcoren77.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="算法" scheme="https://kcoren77.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>面向对象初探--基于C++(1)</title>
